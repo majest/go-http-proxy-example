@@ -1,16 +1,19 @@
 package main
 
 import (
-	"flag"
-	"log"
-	"net/http"
-
 	"github.com/elazarl/goproxy"
+	"log"
+	"flag"
+	"net/http"
+	"fmt"
+
 )
 
 func main() {
+	
 	verbose := flag.Bool("v", false, "should every proxy request be logged to stdout")
 	addr := flag.String("addr", ":8080", "proxy listen address")
+	fmt.Printf("Starting proxy on port, %s\n", *addr)
 	flag.Parse()
 	proxy := goproxy.NewProxyHttpServer()
 	proxy.Verbose = *verbose
